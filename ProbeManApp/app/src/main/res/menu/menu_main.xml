@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.orangeman.probemanapp.activity.MainActivity">
+    <item
+        android:id="@+id/action_retry_download_model"
+        android:orderInCategory="100"
+        android:title="@string/action_retry_download_model"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/action_about"
+        android:orderInCategory="100"
+        android:title="@string/action_about"
+        app:showAsAction="never" />
+</menu>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00000000">
+
+    <com.orangeman.probemanapp.customview.CameraSourcePreview
+        android:id="@+id/preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.orangeman.probemanapp.customview.GraphicOverlay
+            android:id="@+id/faceOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.orangeman.probemanapp.customview.CameraSourcePreview>
+
+
+    <include
+        android:id="@+id/bottom_sheet_layout"
+        layout="@layout/layout_bottom_sheet"></include>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">男を見る目</string>
+    <string name="action_about">アプリについて</string>
+    <string name="classifier_activity_name" translation_description="do probe man thing">男を見極めましょう。</string>
+    <string name="permission_camera_rationale">カメラの使用を許可してください。</string>
+    <string name="go_ahead_tip">もっと近く</string>
+    <string name="camera_not_usable_tip">カメラ機能は使えません。</string>
+    <string name="iswaiting_for_recognition_tip">もうすぐ見えます。</string>
+    <string name="dialog_about_title">アプリについて</string>
+    <string name="dialog_about_content">アプリをご利用頂き、ありがとうございます。継続的な改善を行います。ご期待ください。</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_confirm_title">確認</string>
+    <string name="dialog_delete_profile_confirm_content">本当にこのプロファイルを削除しますか？</string>
+    <string name="dialog_yes">はい</string>
+    <string name="dialog_no">いいえ</string>
+    <string name="download_model_failed_tip">世間の知恵を手に入れませんでした。メニューでもう一回チャレンジしてください。</string>
+    <string name="action_retry_download_model">世間の知恵を手に入れる</string>
+    <string name="download_model_start_tip">世間の知恵を手に入れます。</string>
+    <string name="download_model_stop_tip">世間の知恵を手に入れました。</string>
+    <string name="load_model_failed_tip">世間の知恵を開ませんでした。</string>
+    <string name="download_model_succeeded_tip">世間の知恵を手に入れました。</string>
+
+
+</resources>
