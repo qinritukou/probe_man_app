@@ -10,6 +10,8 @@ import android.view.View
 import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.orangeman.probemanapp.R
 import com.orangeman.probemanapp.activity.adapter.ProfileListAdapter
@@ -22,12 +24,20 @@ import com.orangeman.probemanapp.util.domain.Logger
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private val profileRepository = ProfileRepository(this)
 
+
+    private lateinit var adView : AdView
     private lateinit var profileListView: ListView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setSupportActionBar(findViewById(R.id.toolbar))
+//        setSupportActionBar(findViewById(R.id.toolbar))
+        adView = findViewById(R.id.adView)
+        val request =
+            AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR) // All emulators
+                .build()
+        adView.loadAd(request)
 
         findViewById<FloatingActionButton>(R.id.openTakePictureView).setOnClickListener(this)
         profileListView = findViewById<ListView>(R.id.profile_list_view)

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1096499725478",
+    "firebase_url": "https://orangeman-store.firebaseio.com",
+    "project_id": "orangeman-store",
+    "storage_bucket": "orangeman-store.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1096499725478:android:3027d895b07c0361322067",
+        "android_client_info": {
+          "package_name": "com.orangeman.probemanapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1096499725478-9tp1646ndd88n6afjtilhlfqu7f05msp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsDnVEU7K2ffQbER_WrgDwiKgziAmR4XI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1096499725478-9tp1646ndd88n6afjtilhlfqu7f05msp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
