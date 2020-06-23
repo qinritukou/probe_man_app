@@ -91,7 +91,6 @@ class ClassifierActivity : CameraActivity() {
         }
         try {
             val numThreads = 5
-//            LOGGER.d("Creating classifier (numThreads=%d)", numThreads)
             classifier = ProbeManNet(this, numThreads)
             // Updates the input image size.
             imageSizeX = classifier!!.imageSizeX

@@ -32,6 +32,7 @@ import com.orangeman.probemanapp.customview.domain.Recognition
 import com.orangeman.probemanapp.util.domain.ConstValues
 import com.orangeman.probemanapp.util.domain.Logger
 import java.io.IOException
+import java.lang.Exception
 
 
 abstract class CameraActivity : AppCompatActivity(), View.OnClickListener, OnGlobalLayoutListener, FaceDetectedCallback {
@@ -116,7 +117,11 @@ abstract class CameraActivity : AppCompatActivity(), View.OnClickListener, OnGlo
 
     protected fun runInBackground(r: Runnable?) {
         if (handler != null) {
-            handler!!.post(r)
+            try {
+                handler!!.post(r)
+            } catch (e: Exception) {
+                LOGGER.e("$e")
+            }
         }
     }
 

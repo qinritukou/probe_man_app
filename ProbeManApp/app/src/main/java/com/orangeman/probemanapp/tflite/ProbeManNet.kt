@@ -58,23 +58,22 @@ class ProbeManNet {
     /** Processer to apply post processing of the output probability.  */
     private val probabilityProcessor: TensorProcessor
 
-    private fun loadMappedFile(context: Context): MappedByteBuffer? {
+    private fun loadMappedFile(context: Context): MappedByteBuffer {
         val inputStream = FileInputStream(File(DirectoryUtil.appRootFolder(context), ConstValues.ModelFileName))
 
         try {
             val fileChannel: FileChannel = inputStream.channel
-            return fileChannel.map(FileChannel.MapMode.READ_ONLY, 0, fileChannel.size())
+            val result =  fileChannel.map(FileChannel.MapMode.READ_ONLY, 0, fileChannel.size())
+            inputStream.close()
+            return result
         } catch (var12: Throwable) {
             try {
                 inputStream.close()
             } catch (var11: Throwable) {
                 var12.addSuppressed(var11)
             }
-            LOGGER.e("$var12")
+            throw var12
         }
-
-        inputStream.close()
-        return null
     }
 
     constructor(context: Context, numThreads: Int) {
