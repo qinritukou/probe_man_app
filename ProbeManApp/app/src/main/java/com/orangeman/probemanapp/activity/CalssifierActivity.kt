@@ -12,6 +12,7 @@ import com.orangeman.probemanapp.customview.domain.Recognition
 import com.orangeman.probemanapp.db.repository.ProfileRepository
 import com.orangeman.probemanapp.db.repository.domain.Profile
 import com.orangeman.probemanapp.tflite.ProbeManNet
+import com.orangeman.probemanapp.util.ClassifierUtil
 import com.orangeman.probemanapp.util.ImageUtil
 import com.orangeman.probemanapp.util.domain.Logger
 import java.io.IOException
@@ -19,13 +20,10 @@ import java.io.IOException
 
 class ClassifierActivity : CameraActivity() {
     private var recognitionMap: Map<Int, List<Recognition>>? = null
-    private var classifier: ProbeManNet? = null
 
     private var lastProcessingTimeMs: Long = 0
     private var sensorOrientation: Int = 0
     private var isProcessing: Boolean = false
-    private var imageSizeX = 0
-    private var imageSizeY = 0
 
     private val profileRepository = ProfileRepository(this)
 
@@ -33,16 +31,10 @@ class ClassifierActivity : CameraActivity() {
         return R.layout.camera_connection_fragment
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-    }
-
     override fun processImage(faceImage: Bitmap) {
         if (isProcessing) return
         runInBackground(Runnable {
-            if (classifier == null) {
-                recreateClassifier()
-            }
+            val classifier = ClassifierUtil.getClassifier(this)
             if (classifier != null) {
                 val startTime = SystemClock.uptimeMillis()
                 isProcessing = true
@@ -80,23 +72,6 @@ class ClassifierActivity : CameraActivity() {
         } catch (ex: Exception) {
             LOGGER.w("${ex.message}")
             Toast.makeText(this, R.string.camera_not_usable_tip, Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private fun recreateClassifier() {
-        if (classifier != null) {
-            LOGGER.d("Closing classifier.")
-            classifier!!.close()
-            classifier = null
-        }
-        try {
-            val numThreads = 5
-            classifier = ProbeManNet(this, numThreads)
-            // Updates the input image size.
-            imageSizeX = classifier!!.imageSizeX
-            imageSizeY = classifier!!.imageSizeY
-        } catch (e: IOException) {
-            LOGGER.e(e, "Failed to create classifier.")
         }
     }
 

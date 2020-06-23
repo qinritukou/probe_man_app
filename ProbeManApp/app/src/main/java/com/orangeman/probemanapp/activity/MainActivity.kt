@@ -16,9 +16,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.orangeman.probemanapp.R
 import com.orangeman.probemanapp.activity.adapter.ProfileListAdapter
 import com.orangeman.probemanapp.db.repository.ProfileRepository
+import com.orangeman.probemanapp.util.ClassifierUtil
 import com.orangeman.probemanapp.util.DownloadUtil
 import com.orangeman.probemanapp.util.domain.ConstValues.TAKE_PICTURE_ACTIVITY_RESULT
 import com.orangeman.probemanapp.util.domain.Logger
+import org.tensorflow.lite.TensorFlowLite
 
 @Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity(), View.OnClickListener {
@@ -46,6 +48,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         profileListView.adapter = adapter
 
         DownloadUtil.downloadModel(this)
+        ClassifierUtil.createClassifier(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -81,6 +84,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        ClassifierUtil.close()
+    }
+
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.openTakePictureView -> {
@@ -101,10 +109,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
         }
-    }
-
-    companion object {
-        val LOGGER = Logger()
     }
 
 }
